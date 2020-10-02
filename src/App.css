@@ -36,3 +36,37 @@
     transform: rotate(360deg);
   }
 }
+
+svg{
+  overflow: visible;
+}
+
+body{
+  width: 100vw;
+  height: 100vh;
+  display: flex; 
+  justify-content: center;
+  /* align-items: center; */
+  background-color: #303030;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin-top:100px;
+}
+
+h1{
+  text-align: center;
+  color:white;
+  padding: 0;
+  margin: 0;
+}
+h2{
+  text-align: center;
+  padding: 0;
+  color:white;
+  margin: 0;
+}

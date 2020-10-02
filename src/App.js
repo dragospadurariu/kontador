@@ -59,7 +59,7 @@ function App() {
 
       if (year === 2019) {
         const month = dateTime.getMonth();
-        const foundMonth = months.find((m) => m.month == monthNames[month]);
+        const foundMonth = months.find((m) => m.month === monthNames[month]);
         if (foundMonth) {
           months[months.indexOf(foundMonth)] = {
             ...foundMonth,

@@ -10,15 +10,18 @@ import {
 import { max } from 'd3-array';
 
 const Chart = ({ data }) => {
-  const svgRef = useRef();
 
-  const WIDTH = data.length * 50;
-  const HEIGHT = 300;
-  const maxValue = max(data.map((value) => value.counter));
-  const yScalePadding = 2;
+  const svgRef = useRef();
 
 
   useEffect(() => {
+
+
+    const WIDTH = data.length * 50;
+    const HEIGHT = 300;
+    const maxValue = max(data.map((value) => value.counter));
+    const yScalePadding = 2;
+    
     const svg = select(svgRef.current)
       .attr('width', WIDTH)
       .attr('height', HEIGHT);
@@ -54,18 +57,18 @@ const Chart = ({ data }) => {
       .attr('width', xScale.bandwidth())
       .attr('height', (data) => HEIGHT - yScale(data.counter))
       .attr('y', -HEIGHT)
-      .on('mouseenter', (event, dataArray) => {
-        console.log(dataArray);
+      .on('mouseenter', (event, object) => {
+        console.log(object);
         svg
           .selectAll('.tooltip')
-          .data([dataArray])
+          .data([object])
           .join('text')
           .attr('class', 'tooltip')
-          .text(dataArray.counter)
-          .attr('x',xScale(data.indexOf(dataArray)) + xScale.bandwidth()/2)
+          .text(object.counter)
+          .attr('x',xScale(data.indexOf(object)) + xScale.bandwidth()/2)
           .attr('text-anchor','middle')
           .transition()
-          .attr('y',yScale(dataArray.counter) - 10)
+          .attr('y',yScale(object.counter) - 10)
           
       })
       .on('mouseleave',()=>svg.select('.tooltip').remove())
